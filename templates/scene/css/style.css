@@ -1,0 +1,19 @@
+#collapsibleNavbar ul li:hover a{
+    color: red !important;
+}
+#collapsibleNavbar ul li a{
+    font-family: 'Viaoda Libre', cursive;
+    font-weight: bold;
+}
+nav {
+    background: linear-gradient(45deg, #3623d4, #d4124c) !important;
+    box-shadow: 0 0 9px 3px black;
+}
+.navbar-brand{
+    font-family: 'Dancing Script', cursive;
+    font-size: 31px !important;
+    letter-spacing: 4px;
+}
+.navbar-brand:hover{
+    transform: scale(1.5);
+}

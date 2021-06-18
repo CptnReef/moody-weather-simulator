@@ -1,29 +1,36 @@
 import os
 import math
+from flask.helpers import url_for
 import requests
 from tkinter import *
-from flask import *
+from flask import Flask, render_template,redirect,url_for
 
 app = Flask(__name__)
 
-@app.route("/home")
-def home(state='Florida'):
+@app.route("/")
+def Home(state='California'):
     url = f'http://api.openweathermap.org/data/2.5/weather?q={state},Us&appid=a485168e9cae605b5d907b11ec1a547a'
-    response = requests.get(url).json()
-    temp = response['main']['temp']
-    feels_like = response['main']['feels_like']
-
     mood = {
-        'temp': math.floor((temp * 1.8) - 459.67), #convert to degrees
-        'feels_like': math.floor((feels_like * 1.8) - 459.67), #convert to degrees
-        'humidity': response['main']['humidity']
+        'response': requests.get(url).json(),
+        'place': state,
+        'math': math.floor,
+        'mad_maffs': range(0,120)
     }
 
-    return render_template('index.html', mood=mood, state=state)
+    return render_template('index.html', **mood)
 
-# weather = get_weather(API_KEY, city_name)
+@app.route("/<state>", methods=["GET", "POST"])
+def weather(state='California'):
+    url = f'http://api.openweathermap.org/data/2.5/weather?q={state},Us&appid=a485168e9cae605b5d907b11ec1a547a'
+    mood = {
+        'response': requests.get(url).json(),
+        'place': state,
+        'math': math.floor,
+        'mad_maffs': range(0,120)
+    }
 
-# print(weather['temp'],weather['feels_like'],weather['humidity'])
+    return render_template('index.html', **mood)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,5 +1,9 @@
 # moody-weather-simulator
 
+## To find your weather:
+
+-    Input Weather in URL
+
 This App tells your current weather's mood and adjust the color.
 
 $ pip install "requests"
