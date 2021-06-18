@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Mood Weather</title>
+    </head>
+
+    <body>
+        <h1>Mood Type</h1>
+        <p>response['main']</p>
+        <p>Temperature: {{math((response['main']['temp'] * 1.8) - 459.67)}}</p>
+        <p>Feels Like: {{math((response['main']['feels_like'] * 1.8) - 459.67)}}</p>
+        <p>Humidity: {{response['main']['humidity']}}</p>
+    </body>
+</html>
